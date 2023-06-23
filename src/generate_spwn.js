@@ -29,7 +29,10 @@ let c_to_wat = async (code) => {
     }
   );
   r = await r.text();
-  return r;
+  return `extern "C" {
+  extern void add_object(int x_position, int y_position, int id);
+}
+` + r;
 };
 
 function wat_to_spwn(code) {
